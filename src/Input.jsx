@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { InputContainer } from './Input.styled';
-import theme from './styles/theme';
 
 type Props = {
   type?: String,
@@ -26,6 +25,7 @@ const Input = ({
   errors,
   onChange,
   children,
+  theme,
   ...rest
 }: Props) => (
   <InputContainer>
