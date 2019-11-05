@@ -1,0 +1,23 @@
+#Locals
+*.local.js
+local.js
+
+#node_modules
+node_modules/
+
+#test
+*.apis/test
+
+# Logs
+logs
+*.log
+app.log
+
+# Dependency directory
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+.DS_Store
+.vscode
+
+# env
+.env
+.sass-cache
