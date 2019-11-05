@@ -28,7 +28,7 @@ const Input = ({
   theme,
   ...rest
 }: Props) => (
-  <InputContainer>
+  <InputContainer theme={theme}>
     <label htmlFor={id}>{placeholder}</label>
     <input
       id={name}
@@ -36,7 +36,6 @@ const Input = ({
       type={type}
       onChange={onChange}
       value={value}
-      theme={theme}
       required={required}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
