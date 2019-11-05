@@ -32,8 +32,7 @@ export const InputContainer = styled.div`
     transition: ${({ theme: { transition } }) => transition};
   }
 
-  input,
-  textarea {
+  input {
     border: 2px solid
       ${({ withError, theme: { colors } }) =>
         withError ? colors.lightgrey : colors.lightgrey};
@@ -74,37 +73,10 @@ export const InputContainer = styled.div`
     }
   }
 
-  input[type='file'] {
-    padding: 7px;
-    color: ${({ theme: { colors } }) => colors.grey};
-  }
-
-  textarea {
-    resize: none;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    min-height: 24px;
-    height: auto;
-  }
-
   .error {
     display: block;
     text-align: left;
     color: ${({ theme: { colors } }) => colors.red};
     font-size: 14px;
-  }
-
-  .image-container {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    text-align: left;
-
-    img {
-      display: block;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-    }
   }
 `;
