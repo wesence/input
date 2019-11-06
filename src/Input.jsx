@@ -15,7 +15,6 @@ type Props = {
   children: String,
   characterCount?: Boolean,
   errColor?: String,
-  providedTheme: Object,
 };
 
 const Input = ({
@@ -30,7 +29,6 @@ const Input = ({
   characterCount,
   children,
   errColor,
-  providedTheme,
   ...rest
 }: Props) => {
   function renderInput() {
@@ -55,7 +53,6 @@ const Input = ({
 
   return (
     <InputContainer
-      providedTheme={providedTheme}
       withError={errors && errors.length > 0}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}>

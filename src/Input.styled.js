@@ -15,8 +15,8 @@ export const InputContainer = styled.div`
     font-size: 1em;
     background-color: #ffffff;
     border: 2px solid #ffffff;
-    transition: ${(props) => props.providedTheme.transition};
-    color: ${(props) => props.providedTheme.colors.textSecondary};
+    transition: ${(props) => props.theme.transition};
+    color: ${(props) => props.theme.colors.textSecondary};
     cursor: text;
     pointer-events: none;
     touch-action: none;
@@ -28,45 +28,45 @@ export const InputContainer = styled.div`
     top: 10px;
     height: 20px;
     width: 20px;
-    fill: ${(props) => props.providedTheme.colors.textSecondary};
-    transition: ${(props) => props.providedTheme.transition};
+    fill: ${(props) => props.theme.colors.textSecondary};
+    transition: ${(props) => props.theme.transition};
   }
 
   input {
     border: 2px solid
       ${({ withError, props }) =>
         withError
-          ? props.providedTheme.colors.textSecondaryLight
-          : props.providedTheme.colors.textSecondaryLight};
+          ? props.theme.colors.textSecondaryLight
+          : props.theme.colors.textSecondaryLight};
     width: 100%;
     max-width: 100%;
     padding: 10px;
     padding-left: ${({ withIcon }) => (withIcon ? '40px' : '10px')};
     border-radius: 5px;
-    transition: ${(props) => props.providedTheme.transition};
+    transition: ${(props) => props.theme.transition};
 
     &:focus,
     &.active {
       outline: none;
-      border-color: ${(props) => props.providedTheme.colors.btnPrimary};
+      border-color: ${(props) => props.theme.colors.btnPrimary};
 
       & + label {
         display: none;
         left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-        color: ${(props) => props.providedTheme.colors.textPrimary};
+        color: ${(props) => props.theme.colors.textPrimary};
       }
 
       & ~ svg {
-        fill: ${(props) => props.providedTheme.colors.btnPrimary};
+        fill: ${(props) => props.theme.colors.btnPrimary};
       }
     }
 
     &.active:not(:focus) {
-      border-color: ${(props) => props.providedTheme.colors.textSecondaryLight};
-      color: ${(props) => props.providedTheme.colors.textSecondary};
+      border-color: ${(props) => props.theme.colors.textSecondaryLight};
+      color: ${(props) => props.theme.colors.textSecondary};
 
       & ~ svg {
-        fill: ${(props) => props.providedTheme.colors.textSecondary};
+        fill: ${(props) => props.theme.colors.textSecondary};
       }
     }
 
@@ -78,7 +78,7 @@ export const InputContainer = styled.div`
   .error {
     display: block;
     text-align: left;
-    color: ${(props) => props.providedTheme.colors.error};
+    color: ${(props) => props.theme.colors.error};
     font-size: 14px;
   }
 `;
