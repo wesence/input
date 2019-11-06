@@ -37,10 +37,10 @@ export const InputContainer = styled.div`
 
   input {
     border: 2px solid
-      ${({ withError, props }) =>
+      ${({ withError, theme }) =>
         withError
-          ? props.theme.colors.textSecondaryLight
-          : props.theme.colors.textSecondaryLight};
+          ? theme.colors.textSecondaryLight
+          : theme.colors.textSecondaryLight};
     width: 100%;
     max-width: 100%;
     padding: 10px;
