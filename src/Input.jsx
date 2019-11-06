@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { withTheme } from 'styled-components';
 import { InputContainer } from './Input.styled';
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
   errors?: Array,
   onChange: () => void,
   children: String,
+  characterCount?: Boolean,
+  errColor?: String,
   theme: Object,
 };
 
@@ -24,30 +27,48 @@ const Input = ({
   value,
   errors,
   onChange,
+  characterCount,
   children,
+  errColor,
   theme,
   ...rest
-}: Props) => (
-  <InputContainer theme={theme}>
-    <label htmlFor={id}>{placeholder}</label>
-    <input
-      id={name}
-      name={name}
-      type={type}
-      onChange={onChange}
-      value={value}
-      required={required}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
-    />
-    {errors &&
-      errors.length > 0 &&
-      errors.map((i) => (
-        <div key={i.id} className="error">
-          {i.message}
-        </div>
-      ))}
-  </InputContainer>
-);
+}: Props) => {
+  function renderInput() {
+    return (
+      <>
+        <input
+          id={name}
+          name={name}
+          type={type}
+          onChange={(e) => onChange(e.target.name, e.target.value, e)}
+          value={value}
+          required={required}
+          characterCount={characterCount}
+        />
+        <label htmlFor={id}>{placeholder}</label>
+        {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
+          <div className="errors">{value.length}</div>
+        ) : null}
+      </>
+    );
+  }
 
-export default Input;
+  return (
+    <InputContainer
+      theme={theme}
+      withError={errors && errors.length > 0}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}>
+      {renderInput()}
+      {errors &&
+        errors.length > 0 &&
+        errors.map((i) => (
+          <div key={i.id} className="error">
+            {i.message}
+          </div>
+        ))}
+    </InputContainer>
+  );
+};
+
+export default withTheme(Input);
