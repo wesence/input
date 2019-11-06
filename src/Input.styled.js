@@ -15,10 +15,7 @@ export const InputContainer = styled.div`
     font-size: 1em;
     background-color: #ffffff;
     border: 2px solid #ffffff;
-    transition: ${(props) => {
-      console.log(props);
-      return props.theme.transition;
-    }};
+    transition: ${(props) => props.theme.transition};
     color: ${(props) => props.theme.colors.textSecondary};
     cursor: text;
     pointer-events: none;

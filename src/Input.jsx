@@ -14,6 +14,7 @@ type Props = {
   children: String,
   characterCount?: Boolean,
   errColor?: String,
+  theme?: Object,
 };
 
 const Input = ({
@@ -28,9 +29,9 @@ const Input = ({
   characterCount,
   children,
   errColor,
+  theme,
   ...rest
 }: Props) => {
-  console.log(rest);
   function renderInput() {
     return (
       <>
@@ -41,7 +42,6 @@ const Input = ({
           onChange={(e) => onChange(e.target.name, e.target.value, e)}
           value={value}
           required={required}
-          characterCount={characterCount}
         />
         <label htmlFor={id}>{placeholder}</label>
         {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
@@ -54,6 +54,7 @@ const Input = ({
   return (
     <InputContainer
       withError={errors && errors.length > 0}
+      theme={theme}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}>
       {renderInput()}
@@ -66,6 +67,19 @@ const Input = ({
         ))}
     </InputContainer>
   );
+};
+
+Input.defaultProps = {
+  theme: {
+    colors: {
+      textPrimary: 'rgba(0, 0, 0, 0.85)',
+      textSecondaryLight: '#f5f5f5',
+      textSecondary: '#9e9e9e',
+      btnPrimary: '#1976D2',
+      btnPrimaryHover: '#0D47A1',
+      error: '#D32F2F',
+    },
+  },
 };
 
 export default Input;
