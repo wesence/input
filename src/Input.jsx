@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-// import { withTheme } from 'styled-components';
 import { InputContainer } from './Input.styled';
 
 type Props = {
@@ -31,6 +30,7 @@ const Input = ({
   errColor,
   ...rest
 }: Props) => {
+  console.log(rest);
   function renderInput() {
     return (
       <>
