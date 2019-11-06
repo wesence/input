@@ -53,7 +53,7 @@ const Input = ({
           id={name}
           name={name}
           type={type}
-          onChange={(e) => onChange(e.target.name, e.target.value, e)}
+          onChange={() => onChange()}
           value={value}
           required={required}
         />
