@@ -17,6 +17,20 @@ type Props = {
   theme?: Object,
 };
 
+const defaultTheme = {
+  colors: {
+    textPrimary: 'rgba(0, 0, 0, 0.85)',
+    textSecondaryLight: '#f5f5f5',
+    textSecondary: '#9e9e9e',
+    btnPrimary: '#1976D2',
+    btnPrimaryHover: '#0D47A1',
+    error: '#D32F2F',
+    shadow: '0 5px 15px rgba(0,0,0,.08)',
+    shadowLight: '0 1px 2px rgba(0, 0, 0, 0.05)',
+    transition: 'all 0.2s ease-in-out',
+  },
+};
+
 const Input = ({
   type,
   name,
@@ -54,7 +68,7 @@ const Input = ({
   return (
     <InputContainer
       withError={errors && errors.length > 0}
-      theme={theme}
+      theme={{ ...defaultTheme, ...theme }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}>
       {renderInput()}
@@ -70,16 +84,7 @@ const Input = ({
 };
 
 Input.defaultProps = {
-  theme: {
-    colors: {
-      textPrimary: 'rgba(0, 0, 0, 0.85)',
-      textSecondaryLight: '#f5f5f5',
-      textSecondary: '#9e9e9e',
-      btnPrimary: '#1976D2',
-      btnPrimaryHover: '#0D47A1',
-      error: '#D32F2F',
-    },
-  },
+  theme: {},
 };
 
 export default Input;
