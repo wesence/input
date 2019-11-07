@@ -44,47 +44,37 @@ export const InputContainer = styled.div`
     padding-left: ${({ withIcon }) => (withIcon ? '40px' : '10px')};
     border-radius: 5px;
     transition: ${(props) => props.theme.transition};
+  }
 
-    &:focus,
-    &.active {
-      outline: none;
-      border-color: ${({ theme: { colors } }) => colors.btnPrimary};
+  input:focus,
+  input.active {
+    outline: none;
+    border-color: ${({ theme: { colors } }) => colors.btnPrimary};
+  }
 
-    //   & + label {
-    //     display: none;
-    //     left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-    //     color: ${({ theme: { colors } }) => colors.textPrimary};
-    //   }
+  input.active + label,
+  input:focus + label {
+    display: none;
+    left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
+    color: ${({ theme: { colors } }) => colors.textPrimary};
+  }
 
-    //   & ~ svg {
-    //     fill: ${({ theme: { colors } }) => colors.blue};
-    //   }
-    }
+  input.active ~ svg,
+  input:focus ~ svg {
+    fill: ${({ theme: { colors } }) => colors.blue};
+  }
 
-    &.active + label,
-    &:focus + label {
-      display: none;
-      left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-      color: ${({ theme: { colors } }) => colors.textPrimary};
-    }
+  input.active:not(:focus) {
+    border-color: ${(props) => props.theme.colors.textSecondaryLight};
+    color: ${(props) => props.theme.colors.textSecondary};
+  }
 
-    &.active ~ svg,
-    &:focus ~ svg {
-        fill: ${({ theme: { colors } }) => colors.blue};
-      }
+  input.active:not(:focus) ~ svg {
+    fill: ${(props) => props.theme.colors.textSecondary};
+  }
 
-    &.active:not(:focus) {
-      border-color: ${(props) => props.theme.colors.textSecondaryLight};
-      color: ${(props) => props.theme.colors.textSecondary};
-    }
-
-    &.active:not(:focus) ~ svg {
-        fill: ${(props) => props.theme.colors.textSecondary};
-      }
-
-    &:disabled {
-      background-color: #ffffff;
-    }
+  input:disabled {
+    background-color: #ffffff;
   }
 
   input[type='file'] {
