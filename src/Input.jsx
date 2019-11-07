@@ -1,5 +1,8 @@
 // @flow
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import CustomDatePickerInput from './CustomDatePickerInput';
 import { InputContainer } from './Input.styled';
 
 type Props = {
@@ -46,26 +49,88 @@ const Input = ({
   theme,
   ...rest
 }: Props) => {
+  const [inputValue, inputHandler] = useState(
+    type === 'date' ? new Date(value || '') : value || '',
+  );
+
+  useEffect(
+    (e) => {
+      if (value) {
+        if (type === 'date') {
+          if (typeof value === 'string') {
+            inputHandler(e.target.name, new Date(e.target.value));
+          }
+        } else {
+          inputHandler(e.target.name, e.target.value);
+        }
+      }
+    },
+    [value],
+  );
+
   function renderInput() {
-    return (
-      <>
-        <input
-          id={name}
-          value={value}
-          name={name}
-          className={`${value.length > 0 ? 'active' : ''}${
-            errors && errors.length > 0 ? ' invalid' : ''
-          }`}
-          type={type || 'text'}
-          onChange={(e) => onChange(e.target.name, e.target.value)}
-          required={required}
-        />
-        {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
-        {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
-          <div className="error">{value.length}</div>
-        ) : null}
-      </>
-    );
+    switch (type) {
+      case 'textarea':
+        return (
+          <>
+            <textarea
+              type={type || 'text'}
+              id={name}
+              value={value}
+              name={name}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
+              onChange={(e) => onChange(e.target.name, e.target.value)}
+              required={required}
+            />
+            <label htmlFor={id}>{placeholder}</label>
+            {value && value.replace(/\s/g, '').length > 0 ? (
+              <div className="error">{value.length}</div>
+            ) : null}
+          </>
+        );
+
+      case 'date':
+        return (
+          <DatePicker
+            name={name}
+            id={id}
+            dateFormat="MMM-do-yyyy, h:mm a"
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={1}
+            placeholderText={placeholder}
+            className={errors && errors.length > 0 ? ' invalid' : ''}
+            onSelect={(e) => inputHandler(e.target.name, e.target.value)}
+            onChange={(e) => inputHandler(e.target.name, e.target.value)}
+            selected={inputValue || new Date()}
+            customInput={<CustomDatePickerInput />}
+            minDate={moment().toDate()}
+          />
+        );
+
+      default:
+        return (
+          <>
+            <input
+              type={type || 'text'}
+              id={name}
+              value={value}
+              name={name}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
+              onChange={(e) => onChange(e.target.name, e.target.value)}
+              required={required}
+            />
+            {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
+            {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
+              <div className="error">{value.length}</div>
+            ) : null}
+          </>
+        );
+    }
   }
 
   return (
