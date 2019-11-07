@@ -44,37 +44,35 @@ export const InputContainer = styled.div`
     padding-left: ${({ withIcon }) => (withIcon ? '40px' : '10px')};
     border-radius: 5px;
     transition: ${(props) => props.theme.transition};
-  }
 
-  input:focus,
-  input.active {
-    outline: none;
-    border-color: ${({ theme: { colors } }) => colors.btnPrimary};
-  }
+    &:focus,
+    &.active {
+      outline: none;
+      border-color: ${(props) => props.theme.colors.btnPrimary};
 
-  input.active + label,
-  input:focus + label {
-    display: none;
-    left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-    color: ${({ theme: { colors } }) => colors.textPrimary};
-  }
+      & + label {
+        display: none;
+        left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
+        color: ${(props) => props.theme.colors.textPrimary};
+      }
 
-  input.active ~ svg,
-  input:focus ~ svg {
-    fill: ${({ theme: { colors } }) => colors.blue};
-  }
+      & ~ svg {
+        fill: ${(props) => props.theme.colors.btnPrimary};
+      }
+    }
 
-  input.active:not(:focus) {
-    border-color: ${(props) => props.theme.colors.textSecondaryLight};
-    color: ${(props) => props.theme.colors.textSecondary};
-  }
+    &.active:not(:focus) {
+      border-color: ${(props) => props.theme.colors.textSecondaryLight};
+      color: ${(props) => props.theme.colors.textSecondary};
 
-  input.active:not(:focus) ~ svg {
-    fill: ${(props) => props.theme.colors.textSecondary};
-  }
+      & ~ svg {
+        fill: ${(props) => props.theme.colors.textSecondary};
+      }
+    }
 
-  input:disabled {
-    background-color: #ffffff;
+    &:disabled {
+      background-color: #ffffff;
+    }
   }
 
   input[type='file'] {
