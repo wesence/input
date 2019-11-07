@@ -59,7 +59,7 @@ const Input = ({
         />
         <label htmlFor={id}>{placeholder}</label>
         {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
-          <div className="errors">{value.length}</div>
+          <div className="error">{value.length}</div>
         ) : null}
       </>
     );
