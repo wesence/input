@@ -48,31 +48,48 @@ export const InputContainer = styled.div`
     &:focus,
     &.active {
       outline: none;
-      border-color: ${(props) => props.theme.colors.btnPrimary};
+      border-color: ${({ theme: { colors } }) => colors.btnPrimary};
 
-      & + label {
-        display: none;
-        left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-        color: ${(props) => props.theme.colors.textPrimary};
-      }
+    //   & + label {
+    //     display: none;
+    //     left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
+    //     color: ${({ theme: { colors } }) => colors.textPrimary};
+    //   }
 
-      & ~ svg {
-        fill: ${(props) => props.theme.colors.btnPrimary};
-      }
+    //   & ~ svg {
+    //     fill: ${({ theme: { colors } }) => colors.blue};
+    //   }
     }
+
+    &.active + label,
+    &:focus + label {
+      display: none;
+      left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
+      color: ${({ theme: { colors } }) => colors.textPrimary};
+    }
+
+    &.active ~ svg,
+    &:focus ~ svg {
+        fill: ${({ theme: { colors } }) => colors.blue};
+      }
 
     &.active:not(:focus) {
       border-color: ${(props) => props.theme.colors.textSecondaryLight};
       color: ${(props) => props.theme.colors.textSecondary};
+    }
 
-      & ~ svg {
+    &.active:not(:focus) ~ svg {
         fill: ${(props) => props.theme.colors.textSecondary};
       }
-    }
 
     &:disabled {
       background-color: #ffffff;
     }
+  }
+
+  input[type='file'] {
+    padding: 7px;
+    color: ${({ theme: { colors } }) => colors.textSecondary};
   }
 
   .error {
@@ -80,5 +97,19 @@ export const InputContainer = styled.div`
     text-align: left;
     color: ${(props) => props.theme.colors.error};
     font-size: 14px;
+  }
+
+  .image-container {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    text-align: left;
+
+    img {
+      display: block;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
