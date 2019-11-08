@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "moment": "^2.24.0",
-    "react": "^16.11.0",
+    "react": "^16.10.2",
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.10.2",
     "styled-components": "^4.4.1"
