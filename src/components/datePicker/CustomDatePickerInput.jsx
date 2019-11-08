@@ -25,8 +25,8 @@ class CustomDatePicker extends Component<Props> {
         timeFormat="HH:mm"
         timeIntervals={1}
         placeholderText={placeholder}
-        onSelect={(e) => onSelect(e.target.name, e.target.value)}
-        onChange={(e) => onChange(e.target.name, e.target.value)}
+        onSelect={(date) => onSelect(name, date)}
+        onChange={(date) => onChange(name, date)}
         selected={null}
         minDate={moment().toDate()}
       />
