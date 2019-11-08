@@ -1,3 +1,4 @@
+/* eslint-disable react/prefer-stateless-function */
 // @flow
 import React from 'react';
 
@@ -13,7 +14,7 @@ type Props = {
   onChange: () => void,
 };
 
-class CustomerDatePickerInput extends React.component<Props> {
+class CustomerDatePickerInput extends React.Component<Props> {
   render() {
     const {
       name,
