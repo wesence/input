@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 type Props = {
+  value: any,
   name: String,
   id: String,
   placeholder?: String,
@@ -14,7 +15,7 @@ type Props = {
 
 class CustomDatePicker extends Component<Props> {
   render() {
-    const { name, id, placeholder, onSelect, onChange } = this.props;
+    const { name, id, placeholder, onSelect, onChange, value } = this.props;
 
     return (
       <DatePicker
@@ -27,6 +28,7 @@ class CustomDatePicker extends Component<Props> {
         placeholderText={placeholder}
         onSelect={(date) => onSelect(name, date)}
         onChange={(date) => onChange(name, date)}
+        selected={value}
         minDate={moment().toDate()}
       />
     );
