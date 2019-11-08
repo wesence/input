@@ -12,6 +12,21 @@ type Props = {
   onSelect: () => void,
   onChange: () => void,
   minDate: String,
+  theme?: Object,
+};
+
+const defaultTheme = {
+  colors: {
+    textPrimary: 'rgba(0, 0, 0, 0.85)',
+    textSecondaryLight: '#f5f5f5',
+    textSecondary: '#9e9e9e',
+    btnPrimary: '#1976D2',
+    btnPrimaryHover: '#0D47A1',
+    error: '#D32F2F',
+    shadow: '0 5px 15px rgba(0,0,0,.08)',
+    shadowLight: '0 1px 2px rgba(0, 0, 0, 0.05)',
+    transition: 'all 0.2s ease-in-out',
+  },
 };
 
 const CustomDatePicker = ({
@@ -22,8 +37,9 @@ const CustomDatePicker = ({
   onChange,
   minDate,
   value,
+  theme,
 }: Props) => (
-  <InputContainer>
+  <InputContainer theme={{ ...defaultTheme, ...theme }}>
     <DatePicker
       name={name}
       id={id}
@@ -39,5 +55,9 @@ const CustomDatePicker = ({
     />
   </InputContainer>
 );
+
+CustomDatePicker.defaultProps = {
+  theme: {},
+};
 
 export default CustomDatePicker;
