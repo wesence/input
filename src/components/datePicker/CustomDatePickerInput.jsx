@@ -1,8 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+import { InputContainer } from '../input/Input.styled';
 
 type Props = {
   value: any,
@@ -11,28 +11,33 @@ type Props = {
   placeholder?: String,
   onSelect: () => void,
   onChange: () => void,
+  minDate: String,
 };
 
-class CustomDatePicker extends Component<Props> {
-  render() {
-    const { name, id, placeholder, onSelect, onChange, value } = this.props;
-
-    return (
-      <DatePicker
-        name={name}
-        id={id}
-        dateFormat="MMM-do-yyyy, h:mm a"
-        showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={1}
-        placeholderText={placeholder}
-        onSelect={(date) => onSelect(name, date)}
-        onChange={(date) => onChange(name, date)}
-        selected={value}
-        minDate={moment().toDate()}
-      />
-    );
-  }
-}
+const CustomDatePicker = ({
+  name,
+  id,
+  placeholder,
+  onSelect,
+  onChange,
+  minDate,
+  value,
+}: Props) => (
+  <InputContainer>
+    <DatePicker
+      name={name}
+      id={id}
+      dateFormat="MMM-do-yyyy, h:mm a"
+      showTimeSelect
+      timeFormat="HH:mm"
+      timeIntervals={1}
+      placeholderText={placeholder}
+      onSelect={(date) => onSelect(name, date)}
+      onChange={(date) => onChange(name, date)}
+      selected={value}
+      minDate={minDate}
+    />
+  </InputContainer>
+);
 
 export default CustomDatePicker;
