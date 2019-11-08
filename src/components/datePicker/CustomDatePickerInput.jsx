@@ -27,7 +27,6 @@ class CustomDatePicker extends Component<Props> {
         placeholderText={placeholder}
         onSelect={(date) => onSelect(name, date)}
         onChange={(date) => onChange(name, date)}
-        selected={null}
         minDate={moment().toDate()}
       />
     );
