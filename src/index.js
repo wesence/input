@@ -1,4 +1,2 @@
-import Input from './components/input';
-import DatePicker from './components/datePicker';
-
-export { Input, DatePicker };
+export { default as Input } from './components/input';
+export { default as DatePicker } from './components/datePicker';
