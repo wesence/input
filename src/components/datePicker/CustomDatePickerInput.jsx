@@ -50,7 +50,7 @@ const CustomDatePicker = ({
       onSelect={(date) => onSelect(name, date)}
       onChange={(date) => onChange(name, date)}
       selected={value}
-      minDate={moment().toDate()}
+      minDate={moment().parseISO()}
     />
   </InputContainer>
 );
