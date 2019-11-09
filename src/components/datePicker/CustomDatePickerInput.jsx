@@ -2,7 +2,7 @@
 // @flow
 import React from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+// import moment from 'moment';
 import { InputContainer } from '../input/Input.styled';
 
 type Props = {
@@ -50,7 +50,6 @@ const CustomDatePicker = ({
       onSelect={(date) => onSelect(name, date)}
       onChange={(date) => onChange(name, date)}
       selected={value}
-      minDate={moment().parseISO()}
     />
   </InputContainer>
 );
