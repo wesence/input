@@ -49,7 +49,7 @@ const CustomDatePicker = ({
       placeholderText={placeholder}
       onSelect={(date) => onSelect(name, date)}
       onChange={(date) => onChange(name, date)}
-      selected={value}
+      selected={console.log(value)}
     />
   </InputContainer>
 );
