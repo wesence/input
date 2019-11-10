@@ -47,8 +47,8 @@ const CustomDatePicker = ({
       timeFormat="HH:mm"
       timeIntervals={1}
       placeholderText={placeholder}
-      onSelect={(date) => onSelect(name, date)}
-      onChange={(date) => onChange(name, date)}
+      onSelect={(date) => onSelect(name, new Date(date))}
+      onChange={(date) => onChange(name, new Date(date))}
       selected={console.log(value)}
     />
   </InputContainer>
