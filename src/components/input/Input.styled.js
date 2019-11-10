@@ -53,7 +53,7 @@ export const InputContainer = styled.div`
       & + label {
         display: none;
         left: ${({ withIcon }) => (withIcon ? '35px' : '10px')};
-        color: ${(props) => props.theme.colors.textPrimary};
+        color: ${(props) => props.theme.colors.textSecondary};
       }
 
       & ~ svg {
