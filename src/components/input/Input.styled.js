@@ -32,7 +32,8 @@ export const InputContainer = styled.div`
     transition: ${(props) => props.theme.transition};
   }
 
-  input {
+  input,
+  textarea {
     border: 2px solid
       ${({ withError, theme }) =>
         withError

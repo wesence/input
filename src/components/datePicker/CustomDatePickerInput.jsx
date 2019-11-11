@@ -13,6 +13,7 @@ type Props = {
   onSelect: () => void,
   onChange: () => void,
   theme?: Object,
+  minDate: String,
 };
 
 const defaultTheme = {
@@ -37,6 +38,7 @@ const CustomDatePicker = ({
   onChange,
   value,
   theme,
+  minDate,
 }: Props) => (
   <InputContainer theme={{ ...defaultTheme, ...theme }}>
     <DatePicker
@@ -50,6 +52,7 @@ const CustomDatePicker = ({
       onSelect={(date) => onSelect(name, new Date(date))}
       onChange={(date) => onChange(name, new Date(date))}
       selected={value}
+      minDate={minDate}
     />
   </InputContainer>
 );

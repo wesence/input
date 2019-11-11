@@ -47,25 +47,48 @@ const Input = ({
   ...rest
 }: Props) => {
   function renderInput() {
-    return (
-      <>
-        <input
-          type={type || 'text'}
-          id={name}
-          value={value}
-          name={name}
-          className={`${value.length > 0 ? 'active' : ''}${
-            errors && errors.length > 0 ? ' invalid' : ''
-          }`}
-          onChange={(e) => onChange(e.target.name, e.target.value)}
-          required={required}
-        />
-        {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
-        {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
-          <div className="error">{value.length}</div>
-        ) : null}
-      </>
-    );
+    switch (type) {
+      case 'textarea':
+        return (
+          <>
+            <textarea
+              id={name}
+              value={value}
+              name={name}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
+              onChange={(e) => onChange(e.target.name, e.target.value)}
+              required={required}
+            />
+            {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
+            {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
+              <div className="error">{value.length}</div>
+            ) : null}
+          </>
+        );
+
+      default:
+        return (
+          <>
+            <input
+              type={type || 'text'}
+              id={name}
+              value={value}
+              name={name}
+              required={required}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
+              onChange={(e) => onChange(e.target.name, e.target.value)}
+            />
+            {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
+            {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
+              <div className="error">{value.length}</div>
+            ) : null}
+          </>
+        );
+    }
   }
 
   return (
