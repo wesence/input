@@ -38,6 +38,10 @@ const DropDown = ({
   value,
 }: Props) => {
   const selectStyles = {
+    placeholder: (provided) => ({
+      ...provided,
+      color: theme.colors.textSecondary,
+    }),
     control: (provided, state) => ({
       ...provided,
       padding: 0,
