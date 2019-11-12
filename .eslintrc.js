@@ -44,7 +44,7 @@ module.exports = {
       {
         components: ['Label'],
         required: {
-          every: ['id'],
+          some: ['nesting', 'id'],
         },
       },
     ],
