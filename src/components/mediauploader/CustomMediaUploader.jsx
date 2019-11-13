@@ -10,7 +10,7 @@ type Props = {
   theme?: Object,
 };
 
-const MediaUploader = ({
+const CustomMediaUploader = ({
   errors,
   handleUpload,
   value,
@@ -45,4 +45,4 @@ const MediaUploader = ({
     </InputContainer>
   );
 };
-export default MediaUploader;
+export default CustomMediaUploader;

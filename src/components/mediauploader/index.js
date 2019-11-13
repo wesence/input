@@ -1,3 +1,3 @@
-import MediaUploader from './MediaUploader';
+import CustomMediaUploader from './CustomMediaUploader';
 
-export default MediaUploader;
+export default CustomMediaUploader;
