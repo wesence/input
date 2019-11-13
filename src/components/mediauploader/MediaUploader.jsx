@@ -6,10 +6,17 @@ type Props = {
   value: String,
   errors: Array<Object>,
   handleUpload: () => void,
+  getImageUrl: () => void,
   theme?: Object,
 };
 
-const MediaUploader = ({ errors, handleUpload, value, theme }: Props) => {
+const MediaUploader = ({
+  errors,
+  handleUpload,
+  value,
+  theme,
+  getImageUrl,
+}: Props) => {
   const onChange = (e) => {
     const file = e.target.files[0];
     handleUpload(file);
@@ -25,7 +32,7 @@ const MediaUploader = ({ errors, handleUpload, value, theme }: Props) => {
       />
       {value && (
         <div className="image-container">
-          <img src={value} alt="preview" />
+          <img src={getImageUrl(value)} alt="preview" />
         </div>
       )}
       {errors &&
