@@ -6,16 +6,17 @@ type Props = {
   value: String,
   errors: Array<Object>,
   handleUpload: () => void,
+  theme?: Object,
 };
 
-const MediaUploader = ({ errors, handleUpload, value }: Props) => {
+const MediaUploader = ({ errors, handleUpload, value, theme }: Props) => {
   const onChange = (e) => {
     const file = e.target.files[0];
     handleUpload(file);
   };
 
   return (
-    <InputContainer withError={errors && errors.length > 0}>
+    <InputContainer withError={errors && errors.length > 0} theme={theme}>
       <input
         type="file"
         accept="image/*"
