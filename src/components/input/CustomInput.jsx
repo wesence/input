@@ -31,7 +31,7 @@ const defaultTheme = {
   },
 };
 
-const Input = ({
+const CustomInput = ({
   type,
   name,
   id,
@@ -109,8 +109,8 @@ const Input = ({
   );
 };
 
-Input.defaultProps = {
+CustomInput.defaultProps = {
   theme: {},
 };
 
-export default Input;
+export default CustomInput;

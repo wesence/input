@@ -20,7 +20,7 @@ type Props = {
   value: Array<Object>,
 };
 
-const DropDown = ({
+const CustomDropDown = ({
   name,
   id,
   placeholder,
@@ -131,4 +131,4 @@ const DropDown = ({
   );
 };
 
-export default DropDown;
+export default CustomDropDown;

@@ -1,3 +1,3 @@
-import DropDown from './DropDown';
+import CustomDropDown from './CustomDropDown';
 
-export default DropDown;
+export default CustomDropDown;
