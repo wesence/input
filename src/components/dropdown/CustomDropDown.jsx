@@ -9,6 +9,7 @@ type Props = {
   options?: Array,
   handler: () => void,
   fluid?: Boolean,
+  isClearable: Boolean,
   theme?: Object,
   width?: String,
   autoFocus?: Boolean,
@@ -35,6 +36,7 @@ const CustomDropDown = ({
   hideDropdownIndicator,
   hideOptions,
   onChange,
+  isClearable,
   value,
 }: Props) => {
   const selectStyles = {
@@ -118,6 +120,7 @@ const CustomDropDown = ({
         name={name}
         id={id}
         options={options}
+        isClearable={isClearable}
         styles={selectStyles}
         onChange={onChange || ((r) => handler({ name, value: r }))}
         placeholder={placeholder || 'Select...'}
