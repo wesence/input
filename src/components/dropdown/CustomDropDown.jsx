@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Select from 'react-select';
-
 type Props = {
   name: String,
   id: String,
@@ -19,8 +18,8 @@ type Props = {
   hideOptions?: Boolean,
   onChange?: () => void,
   value: Array<Object>,
+  isDisabled: boolean,
 };
-
 const CustomDropDown = ({
   name,
   id,
@@ -38,6 +37,7 @@ const CustomDropDown = ({
   onChange,
   isClearable,
   value,
+  isDisabled,
 }: Props) => {
   const selectStyles = {
     placeholder: (provided) => ({
@@ -129,9 +129,9 @@ const CustomDropDown = ({
         defaultValue={defaultValue}
         components={hideDropdownIndicator && { DropdownIndicator: null }}
         value={value}
+        isDisabled={isDisabled}
       />
     </>
   );
 };
-
 export default CustomDropDown;
