@@ -1,22 +1,23 @@
 // @flow
 import React from 'react';
 import { InputContainer } from './Input.styled';
-
 type Props = {
-  type?: String,
-  name: String,
-  id: String,
-  placeholder?: String,
-  required?: Boolean,
-  value?: String,
-  errors?: Array,
-  onChange: () => void,
-  children: String,
-  characterCount?: Boolean,
-  errColor?: String,
-  theme?: Object,
+  type?: string,
+  name: string,
+  id: string,
+  placeholder?: string,
+  required?: boolean,
+  value?: string,
+  errors?: Array<{ id: number | string, message: string }>,
+  onChange: (string, string) => void,
+  children: string,
+  characterCount?: boolean,
+  errColor?: string,
+  theme?: {
+    colors: {},
+  },
+  readOnly: boolean,
 };
-
 const defaultTheme = {
   colors: {
     textPrimary: 'rgba(0, 0, 0, 0.85)',
@@ -30,7 +31,6 @@ const defaultTheme = {
     transition: 'all 0.2s ease-in-out',
   },
 };
-
 const Input = ({
   type,
   name,
@@ -44,6 +44,7 @@ const Input = ({
   children,
   errColor,
   theme,
+  readOnly,
   ...rest
 }: Props) => {
   function renderInput() {
@@ -55,11 +56,10 @@ const Input = ({
               id={name}
               value={value}
               name={name}
-              className={`${value.length > 0 ? 'active' : ''}${
-                errors && errors.length > 0 ? ' invalid' : ''
-              }`}
+              className={`${value.length > 0 ? 'active' : ''}${errors && errors.length > 0 ? ' invalid' : ''}`}
               onChange={(e) => onChange(e.target.name, e.target.value)}
               required={required}
+              readOnly={readOnly}
             />
             {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
             {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
@@ -67,7 +67,6 @@ const Input = ({
             ) : null}
           </>
         );
-
       default:
         return (
           <>
@@ -77,10 +76,9 @@ const Input = ({
               value={value}
               name={name}
               required={required}
-              className={`${value.length > 0 ? 'active' : ''}${
-                errors && errors.length > 0 ? ' invalid' : ''
-              }`}
+              className={`${value.length > 0 ? 'active' : ''}${errors && errors.length > 0 ? ' invalid' : ''}`}
               onChange={(e) => onChange(e.target.name, e.target.value)}
+              readOnly={readOnly}
             />
             {type !== 'file' && <label htmlFor={id}>{placeholder}</label>}
             {characterCount && value && value.replace(/\s/g, '').length > 0 ? (
@@ -90,7 +88,6 @@ const Input = ({
         );
     }
   }
-
   return (
     <InputContainer
       withError={errors && errors.length > 0}
@@ -108,9 +105,7 @@ const Input = ({
     </InputContainer>
   );
 };
-
 Input.defaultProps = {
   theme: {},
 };
-
 export default Input;
