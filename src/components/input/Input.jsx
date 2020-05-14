@@ -13,7 +13,7 @@ type Props = {
   children: string,
   characterCount?: boolean,
   errColor?: string,
-  rows: number,
+  rows: string,
   theme?: {
     colors: {},
   },
@@ -80,6 +80,7 @@ const Input = ({
               id={name}
               value={value}
               name={name}
+              rows={rows}
               required={required}
               className={`${value.length > 0 ? 'active' : ''}${
                 errors && errors.length > 0 ? ' invalid' : ''
