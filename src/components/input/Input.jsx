@@ -13,6 +13,7 @@ type Props = {
   children: string,
   characterCount?: boolean,
   errColor?: string,
+  rows: number,
   theme?: {
     colors: {},
   },
@@ -43,6 +44,7 @@ const Input = ({
   characterCount,
   children,
   errColor,
+  rows,
   theme,
   readOnly,
   ...rest
@@ -56,7 +58,10 @@ const Input = ({
               id={name}
               value={value}
               name={name}
-              className={`${value.length > 0 ? 'active' : ''}${errors && errors.length > 0 ? ' invalid' : ''}`}
+              rows={rows}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
               onChange={(e) => onChange(e.target.name, e.target.value)}
               required={required}
               readOnly={readOnly}
@@ -76,7 +81,9 @@ const Input = ({
               value={value}
               name={name}
               required={required}
-              className={`${value.length > 0 ? 'active' : ''}${errors && errors.length > 0 ? ' invalid' : ''}`}
+              className={`${value.length > 0 ? 'active' : ''}${
+                errors && errors.length > 0 ? ' invalid' : ''
+              }`}
               onChange={(e) => onChange(e.target.name, e.target.value)}
               readOnly={readOnly}
             />
