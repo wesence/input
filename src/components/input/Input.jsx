@@ -80,7 +80,6 @@ const Input = ({
               id={name}
               value={value}
               name={name}
-              rows={rows}
               required={required}
               className={`${value.length > 0 ? 'active' : ''}${
                 errors && errors.length > 0 ? ' invalid' : ''
